@@ -1,4 +1,8 @@
+import operate from './operate';
 
-export const calculate = (calc, btn) => {
-
+const calculate = (calc, buttonName) => {
+  if (['+', '-', 'X', '%', '÷'].includes(buttonName))
+    return operate(calc.total, calc.next, buttonName);
 };
+
+export default calculate;
