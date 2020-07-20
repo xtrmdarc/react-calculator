@@ -18,6 +18,13 @@
 - npm
 - ES6
 
+## How to install locally
+
+- Clone this project into your local environment. 
+- Run the command `npm install` to install all the required dependecies.
+- Run the command `npm start`
+- Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
 ## Available Scripts
 
 In the project directory, you can run:
