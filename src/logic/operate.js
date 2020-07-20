@@ -2,29 +2,33 @@
 
 const operate = (numberOne, numberTwo, operation) => {
   let result = 0;
+  numberOne = Big(numberOne);
+  numberTwo = Big(numberTwo);
+
   switch (operation) {
     case 'X': {
-      result = numberOne * numberTwo;
+      result = numberOne.times(numberTwo);
       break;
     }
     case '+': {
-      result = numberOne + numberTwo;
+      result = numberOne.plus(numberTwo);
       break;
     }
     case '-': {
-      result = numberOne - numberTwo;
+      result = numberOne.minus(numberTwo);
       break;
     }
     case '%': {
-      result = numberOne % numberTwo;
+      result = numberOne.mod(numberTwo);
       break;
     }
     case '÷': {
-      result = numberOne / numberTwo;
+      result = numberOne.div(numberTwo);
       break;
     }
     default: {
-      result = 0;
+      result = total;
+      break;
     }
   }
   return result;
