@@ -1,11 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Styles from '../styles';
 
 const Button = props => {
   const { btnName } = props;
+  const style = {
+    width: props.wide ? '50%' : '25%',
+    backgroundColor: props.color ? props.color.backgroundColor : '#f5913e',
+  };
 
   return (
-    <button type="button">
+    <button type="button" style={ style }>
       {btnName}
     </button>
   );
