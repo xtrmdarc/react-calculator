@@ -4,7 +4,7 @@ import ButtonPanel from './ButtonPanel';
 import Styles from '../styles';
 
 const App = () => (
-  <div style={Styles.calculator} >
+  <div style={Styles.calculator}>
     <Display />
     <ButtonPanel />
   </div>

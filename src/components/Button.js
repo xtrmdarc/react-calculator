@@ -3,14 +3,15 @@ import PropTypes from 'prop-types';
 import Styles from '../styles';
 
 const Button = props => {
-  const { btnName } = props;
+  const { btnName, wide, color } = props;
   const style = {
-    width: props.wide ? '50%' : '25%',
-    backgroundColor: props.color ? props.color.backgroundColor : '#f5913e',
+    width: wide ? '50%' : '25%',
+    backgroundColor: color,
+    ...Styles.button,
   };
 
   return (
-    <button type="button" style={ style }>
+    <button type="button" style={style}>
       {btnName}
     </button>
   );
@@ -18,10 +19,13 @@ const Button = props => {
 
 Button.defaultProps = {
   btnName: '',
+  color: '#f5913e',
 };
 
 Button.propTypes = {
   btnName: PropTypes.string,
+  wide: PropTypes.bool.isRequired,
+  color: PropTypes.string,
 };
 
 export default Button;
