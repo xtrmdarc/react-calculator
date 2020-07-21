@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import Styles from '../styles';
 
 const Button = props => {
+  const handleClick = (buttonName) => {
+    return props.clickHandler(buttonName);
+  }
+  
   const { btnName, wide, color } = props;
   const style = {
     width: wide ? '50%' : '25%',
@@ -11,7 +15,7 @@ const Button = props => {
   };
 
   return (
-    <button type="button" style={style}>
+    <button type="button" style={style} onClick={() => handleClick(btnName)}>
       {btnName}
     </button>
   );
