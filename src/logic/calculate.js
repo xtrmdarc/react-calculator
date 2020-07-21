@@ -2,29 +2,35 @@ import operate from './operate';
 
 const calculate = (calculator, buttonName) => {
   let { total, next, operation } = calculator;
-
+  console.log(calculator, buttonName);
   if (['+', '-', 'X', '%', '÷'].includes(buttonName)) {
     total = operate(total, next, operation);
     operation = buttonName;
     next = null;
   }
 
-  if (parseInt(buttonName, 10) || buttonName === '.') {
+  if (parseInt(buttonName, 10) || buttonName === '.' || buttonName === '0') {
     if (operation === null) {
-      total = `${total}${buttonName}`;
+      total = `${(total === null || total === '0') ? '' : total}${buttonName}`;
     } else {
-      next = `${next}${buttonName}`;
+      next = `${(next === null || next === '0') ? '': next}${buttonName}`;
     }
   }
 
   switch (buttonName) {
     case '+/-': {
-      total *= -1;
-      next *= -1;
+      if (total != null) {
+        total *= -1;
+        total = `${total}`;
+      }
+      if (next != null) {
+        next *= -1;
+        next = `${next}`;
+      }
       break;
     }
     case 'AC': {
-      total = 0;
+      total = '0';
       next = null;
       operation = null;
       break;
@@ -39,6 +45,7 @@ const calculate = (calculator, buttonName) => {
       break;
     }
   }
+  console.log( { total, next, operation });
   return { total, next, operation };
 };
 

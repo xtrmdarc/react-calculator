@@ -20,9 +20,10 @@ class App extends React.Component {
   handleClick(buttonName) {
     const newState = Calculate(this.state, buttonName);
     this.setState(newState);
-    if (this.state.next === null)
+    if (newState.next === null)
       this.setState({result: newState.total});
     else this.setState({result: newState.next});
+    console.log(this.state);
   }
 
   render() {

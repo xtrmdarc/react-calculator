@@ -2,8 +2,8 @@ import Big from 'big.js';
 
 const operate = (numberOne, numberTwo, operation) => {
   let result = 0;
-  const num1 = Big(numberOne);
-  const num2 = Big(numberTwo);
+  const num1 = Big(numberOne ? numberOne : 0);
+  const num2 = Big(numberTwo ? numberTwo : 0);
 
   switch (operation) {
     case 'X': {
@@ -31,7 +31,8 @@ const operate = (numberOne, numberTwo, operation) => {
       break;
     }
   }
-  return result;
+
+  return result.toString();
 };
 
 export default operate;
