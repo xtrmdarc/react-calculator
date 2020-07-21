@@ -20,11 +20,12 @@ const Button = props => {
 Button.defaultProps = {
   btnName: '',
   color: '#f5913e',
+  wide: false,
 };
 
 Button.propTypes = {
   btnName: PropTypes.string,
-  wide: PropTypes.bool.isRequired,
+  wide: PropTypes.bool,
   color: PropTypes.string,
 };
 
