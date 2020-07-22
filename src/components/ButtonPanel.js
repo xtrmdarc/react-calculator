@@ -1,18 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Button from './Button';
 import Styles from '../styles';
 
 const ButtonPanel = props => {
-  const handleClick = (buttonName) => {
-    return props.clickHandler(buttonName);
-  };
+  const handleClick = buttonName => props.clickHandler(buttonName);
 
   return (
     <div style={Styles.panel}>
       <div style={Styles.rowPanel}>
         <Button btnName="AC" color="#e0e0e0" clickHandler={handleClick} />
         <Button btnName="+/-" color="#e0e0e0" clickHandler={handleClick} />
-        <Button btnName="%" color="#e0e0e0" clickHandler={handleClick } />
+        <Button btnName="%" color="#e0e0e0" clickHandler={handleClick} />
         <Button btnName="÷" clickHandler={handleClick} />
       </div>
       <div style={Styles.rowPanel}>
@@ -40,6 +39,10 @@ const ButtonPanel = props => {
       </div>
     </div>
   );
-}
+};
 
 export default ButtonPanel;
+
+ButtonPanel.propTypes = {
+  clickHandler: PropTypes.func.isRequired,
+};

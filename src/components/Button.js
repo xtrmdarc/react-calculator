@@ -3,10 +3,8 @@ import PropTypes from 'prop-types';
 import Styles from '../styles';
 
 const Button = props => {
-  const handleClick = (buttonName) => {
-    return props.clickHandler(buttonName);
-  }
-  
+  const handleClick = buttonName => props.clickHandler(buttonName);
+
   const { btnName, wide, color } = props;
   const style = {
     width: wide ? '50%' : '25%',
@@ -31,6 +29,7 @@ Button.propTypes = {
   btnName: PropTypes.string,
   wide: PropTypes.bool,
   color: PropTypes.string,
+  clickHandler: PropTypes.func.isRequired,
 };
 
 export default Button;

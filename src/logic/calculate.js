@@ -17,11 +17,9 @@ const calculate = (calculator, buttonName) => {
 
   if (parseInt(buttonName, 10) || buttonName === '.' || buttonName === '0') {
     if (operation === null) {
-      if (!(buttonName === '.' && /\./.test(total)))
-        total = `${(nonUsefulBaseValues.includes(total)) ? '' : total}${buttonName}`;
-    } else {
-      if (!(buttonName === '.' && /\./.test(next)))
-        next = `${(next === null || next === '0') ? '': next}${buttonName}`;
+      if (!(buttonName === '.' && /\./.test(total))) total = `${(nonUsefulBaseValues.includes(total)) ? '' : total}${buttonName}`;
+    } else if (!(buttonName === '.' && /\./.test(next))) {
+      next = `${(next === null || next === '0') ? '' : next}${buttonName}`;
     }
   }
 
