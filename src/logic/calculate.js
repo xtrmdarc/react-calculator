@@ -2,6 +2,12 @@ import operate from './operate';
 
 const calculate = (calculator, buttonName) => {
   let { total, next, operation } = calculator;
+  const nonUsefulBaseValues = ['0', null, 'ERROR'];
+
+  if (total === 'ERROR') {
+    total = '0';
+    next = null;
+  }
 
   if (['+', '-', 'X', '%', '÷'].includes(buttonName)) {
     total = operate(total, next, operation);
@@ -9,22 +15,28 @@ const calculate = (calculator, buttonName) => {
     next = null;
   }
 
-  if (parseInt(buttonName, 10) || buttonName === '.') {
+  if (parseInt(buttonName, 10) || buttonName === '.' || buttonName === '0') {
     if (operation === null) {
-      total = `${total}${buttonName}`;
-    } else {
-      next = `${next}${buttonName}`;
+      if (!(buttonName === '.' && /\./.test(total))) total = `${(nonUsefulBaseValues.includes(total)) ? '' : total}${buttonName}`;
+    } else if (!(buttonName === '.' && /\./.test(next))) {
+      next = `${(next === null || next === '0') ? '' : next}${buttonName}`;
     }
   }
 
   switch (buttonName) {
     case '+/-': {
-      total *= -1;
-      next *= -1;
+      if (total != null) {
+        total *= -1;
+        total = `${total}`;
+      }
+      if (next != null) {
+        next *= -1;
+        next = `${next}`;
+      }
       break;
     }
     case 'AC': {
-      total = 0;
+      total = '0';
       next = null;
       operation = null;
       break;
@@ -39,6 +51,7 @@ const calculate = (calculator, buttonName) => {
       break;
     }
   }
+
   return { total, next, operation };
 };
 

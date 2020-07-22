@@ -2,8 +2,10 @@ import Big from 'big.js';
 
 const operate = (numberOne, numberTwo, operation) => {
   let result = 0;
-  const num1 = Big(numberOne);
-  const num2 = Big(numberTwo);
+  /* eslint-disable */
+  const num1 = Big(numberOne ? numberOne : '0');
+  const num2 = Big(numberTwo ? numberTwo : '0');
+  /* eslint-enable */
 
   switch (operation) {
     case 'X': {
@@ -23,7 +25,8 @@ const operate = (numberOne, numberTwo, operation) => {
       break;
     }
     case '÷': {
-      result = num1.div(num2);
+      if (numberTwo === '0') result = 'ERROR';
+      else result = num1.div(num2);
       break;
     }
     default: {
@@ -31,7 +34,8 @@ const operate = (numberOne, numberTwo, operation) => {
       break;
     }
   }
-  return result;
+
+  return result.toString();
 };
 
 export default operate;
