@@ -3,7 +3,12 @@ import operate from './operate';
 const calculate = (calculator, buttonName) => {
   let { total, next, operation } = calculator;
   const nonUsefulBaseValues = ['0', null, 'ERROR'];
-  console.log(calculator, buttonName);
+
+  if (total === 'ERROR') {
+    total = '0';
+    next = null;
+  }
+
   if (['+', '-', 'X', '%', '÷'].includes(buttonName)) {
     total = operate(total, next, operation);
     operation = buttonName;
@@ -48,7 +53,7 @@ const calculate = (calculator, buttonName) => {
       break;
     }
   }
-  console.log( { total, next, operation });
+
   return { total, next, operation };
 };
 

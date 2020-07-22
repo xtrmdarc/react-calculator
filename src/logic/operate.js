@@ -23,7 +23,10 @@ const operate = (numberOne, numberTwo, operation) => {
       break;
     }
     case '÷': {
-      result = num1.div(num2);
+      if(numberTwo === '0')
+        result = 'ERROR'
+      else
+        result = num1.div(num2);
       break;
     }
     default: {

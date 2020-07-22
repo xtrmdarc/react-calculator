@@ -23,7 +23,6 @@ class App extends React.Component {
     if (newState.next === null)
       this.setState({result: newState.total});
     else this.setState({result: newState.next});
-    console.log(this.state);
   }
 
   render() {
