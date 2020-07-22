@@ -2,6 +2,7 @@ import operate from './operate';
 
 const calculate = (calculator, buttonName) => {
   let { total, next, operation } = calculator;
+  const nonUsefulBaseValues = ['0', null, 'ERROR'];
   console.log(calculator, buttonName);
   if (['+', '-', 'X', '%', '÷'].includes(buttonName)) {
     total = operate(total, next, operation);
@@ -11,9 +12,11 @@ const calculate = (calculator, buttonName) => {
 
   if (parseInt(buttonName, 10) || buttonName === '.' || buttonName === '0') {
     if (operation === null) {
-      total = `${(total === null || total === '0') ? '' : total}${buttonName}`;
+      if (!(buttonName === '.' && /\./.test(total)))
+        total = `${(nonUsefulBaseValues.includes(total)) ? '' : total}${buttonName}`;
     } else {
-      next = `${(next === null || next === '0') ? '': next}${buttonName}`;
+      if (!(buttonName === '.' && /\./.test(next)))
+        next = `${(next === null || next === '0') ? '': next}${buttonName}`;
     }
   }
 
